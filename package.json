@@ -1,0 +1,24 @@
+{
+  "name": "social_network_api_mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caubenondo/Social_network_api_mongodb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caubenondo/Social_network_api_mongodb/issues"
+  },
+  "homepage": "https://github.com/caubenondo/Social_network_api_mongodb#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.1"
+  }
+}
