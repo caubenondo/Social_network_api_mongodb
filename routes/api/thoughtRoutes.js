@@ -12,23 +12,27 @@ const {
     deleteReaction,
 } = require("../../controllers/thoughtController");
 
-// -- Directs to: /api/thoughts <GET>
+// NOTE: we do it this way to separate complex controller and API routes
+// it's also more sematic to understand from the top down
+
+
+// Handle /api/thoughts <GET>
 router.route("/").get(getAllThoughts);
 
-// -- Directs to: /api/thoughts/:id <GET, PUT, DELETE>
+// Handle /api/thoughts/:id <GET, PUT, DELETE>
 router
     .route("/:id")
     .get(getThoughtsById)
     .put(updateThoughts)
     .delete(deleteThoughts);
 
-// -- Directs to: /api/thoughts/:userId <POST>
+// Handle /api/thoughts/:userId <POST>
 router.route("/:userId").post(createThoughts);
 
-// -- Directs to: /api/thoughts/:thoughtId/reactions <POST>
+// Handle /api/thoughts/:thoughtId/reactions <POST>
 router.route("/:thoughtId/reactions").post(addReaction);
 
-// -- Directs to: /api/thoughts/:thoughtId/reactionId <DELETE>
+// Handle  /api/thoughts/:thoughtId/reactionId <DELETE>
 router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
 
 // Export module router

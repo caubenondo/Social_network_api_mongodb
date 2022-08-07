@@ -1,46 +1,51 @@
 // Require Mongoose
 const { Schema, model } = require("mongoose");
-
+// Schema for User model
 const UserSchema = new Schema(
-  {
-    username: {
-      type: String,
-      unique: true,
-      required: true,
-      trim: true,
+    {
+        // username, unique name, string, required, trim opt 
+        username: {
+            type: String,
+            unique: true,
+            required: true,
+            trim: true,
+        },
+        // email, match email regx, unique and required
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            // use REGEX to validate correct email
+            match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
+        },
+        // associate with Thought Model, equivelent with use model keys as foreign keys in SQL
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Thought",
+            },
+        ],
+        // associate with itself as a model, 
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User",
+            },
+        ],
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      // use REGEX to validate correct email
-      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
-    },
-    thoughts: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Thought",
-      },
-    ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-      getters: true,
-    },
-    id: false,
-  }
+    {
+        // basic JSON output setting and Virtual
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        id: false,
+    }
 );
 
-// get total count of friends
+// Virtual to get total count of friends
 UserSchema.virtual("friendCount").get(function () {
-  return this.friends.length;
+    return this.friends.length;
 });
 
 // create the Users model using the Users Schema

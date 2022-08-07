@@ -1,7 +1,14 @@
 // Require Users Model
 const { User } = require("../models");
 
-// Set up Users Controller
+
+// basic mechanic of controller via mongoo
+// 1 capture user request via params or body
+// 2 Use those inputs to retrieve data from database
+// 3 if data not found, throw error
+// 4 if data found, do the work such as CREATE, UPDATE, READ and DELETE and then send response back to clients 
+
+// Set up User Controller
 const userController = {
     // Create a new User
     createUsers({ body }, res) {

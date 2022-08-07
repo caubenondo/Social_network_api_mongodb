@@ -1,4 +1,6 @@
 
+// this file is a route hub for main api routes, /users and thoughts/
+
 // Set requirements (Express Router)
 const router = require("express").Router();
 
