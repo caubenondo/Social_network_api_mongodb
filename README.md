@@ -3,7 +3,7 @@
 
   ## Description
   In this project, we create a social media backend via MongoDB and Expess.
-
+  [Video of project in action](https://youtu.be/Exx2hcvm_LU)
   ## Table of Contents
   * [Installation](#Installation)
   * [Usage](#Usage)
